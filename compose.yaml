@@ -1,0 +1,16 @@
+services:
+  socket-runner:
+    image: swift-server-socket-io:socket-runner
+    build:
+      context: .
+      target: socket-runner
+    expose:
+      - 3000
+
+  socket-test:
+    image: swift-server-socket-io:socket-test
+    build:
+      context: .
+      target: socket-test
+    depends_on:
+      - socket-runner
